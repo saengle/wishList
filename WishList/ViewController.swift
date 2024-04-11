@@ -9,14 +9,55 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBAction func itemChangeButton(_ sender: Any) {
+        fetchData()
+        itemImageView.load(url: temp.thumbnail)
+    }
     var temp = WishListModel(id: 1, title: "임시제목", description: "설명입니다.", price: 150, discountPercentage: 15.5, rating: 5.0, stock: 32, brand: "Samsung", category: "Phone", thumbnail: "https://cdn.dummyjson.com/product-images/92/thumbnail.jpg", images: ["aaa", "aaa"])
     
     @IBOutlet weak var itemImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchData()
         itemImageView.load(url: temp.thumbnail)
         // Do any additional setup after loading the view.
+    }
+    
+    func fetchData() {
+        //도메인 넣어서 URL 컴포넌트 생성
+        var components = URLComponents(string: "https://dummyjson.com/products")
+        //도메인 뒤에 API 주소 삽입
+        components?.path = "/products/\(Int.random(in: 1...100))"
+        //파라미터 추가할거 있으면 작성
+        //           let parameters = [URLQueryItem(name: "postId", value: "1"),
+        //                             URLQueryItem(name: "id", value: "2")]
+        //           components?.percentEncodedQueryItems = parameters
+        //URL 생성
+        guard let url = components?.url else { return }
+//                print(url)
+        //리퀘스트 생성
+        var request: URLRequest = URLRequest(url: url)
+        //통신 방법 지정
+        request.httpMethod = "GET"
+        //태스크 생성
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            //여기서 에러 체크 및 받은 데이터 가공하여 사용
+            guard let data,
+                  let str = String(data: data, encoding:.utf8) else { return }
+            
+            //     Mark: 데이터 모델화 ... 진행하기
+            do {
+                let decoder = JSONDecoder()
+                let jsonData = try decoder.decode(WishListModel.self, from: data) // Data -> FollowingModel 타입
+                self.temp = jsonData // 리스트만 추출
+            } catch {
+                print("error:\(error)")
+            }
+        }
+        //실행
+        task.resume()
+        
     }
 }
 
