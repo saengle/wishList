@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     
     func fetchData() {
         //도메인 넣어서 URL 컴포넌트 생성
-        var components = URLComponents(string: "https://dummyjson.com/products")
+        var components = URLComponents(string: "https://dummyjson.com")
         //도메인 뒤에 API 주소 삽입
         components?.path = "/products/\(Int.random(in: 1...100))"
         //파라미터 추가할거 있으면 작성
@@ -45,12 +45,12 @@ class ViewController: UIViewController {
             //여기서 에러 체크 및 받은 데이터 가공하여 사용
             guard let data,
                   let str = String(data: data, encoding:.utf8) else { return }
-            
             //     Mark: 데이터 모델화 ... 진행하기
             do {
                 let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(WishListModel.self, from: data) // Data -> FollowingModel 타입
-                self.temp = jsonData // 리스트만 추출
+                // 데이터 WishListModel화
+                let jsonData = try decoder.decode(WishListModel.self, from: data)
+                self.temp = jsonData // temp에 데이터 주입
             } catch {
                 print("error:\(error)")
             }
