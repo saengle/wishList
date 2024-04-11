@@ -61,6 +61,7 @@
 				8E1D4B1D2BC7A3B600FBD1EA /* AppDelegate.swift */,
 				8E1D4B1F2BC7A3B600FBD1EA /* SceneDelegate.swift */,
 				8E1D4B212BC7A3B600FBD1EA /* ViewController.swift */,
+				8E1D4B342BC7A84A00FBD1EA /* WishListPage */,
 				8E1D4B312BC7A74C00FBD1EA /* WishListModel */,
 				8E1D4B232BC7A3B600FBD1EA /* Main.storyboard */,
 				8E1D4B262BC7A3B700FBD1EA /* Assets.xcassets */,
@@ -77,6 +78,14 @@
 			);
 			path = WishListModel;
 			sourceTree = "<group>";
+		};
+		8E1D4B342BC7A84A00FBD1EA /* WishListPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = WishListPage;
+			path = WishList/WishListPage;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
