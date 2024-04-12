@@ -14,6 +14,7 @@
 		8E1D4B272BC7A3B700FBD1EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E1D4B262BC7A3B700FBD1EA /* Assets.xcassets */; };
 		8E1D4B2A2BC7A3B700FBD1EA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8E1D4B292BC7A3B700FBD1EA /* Base */; };
 		8E1D4B332BC7A79100FBD1EA /* WishListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1D4B322BC7A79100FBD1EA /* WishListModel.swift */; };
+		8EB10D182BC96B590011E4D0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8EB10D162BC96B590011E4D0 /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		8E1D4B292BC7A3B700FBD1EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E1D4B2B2BC7A3B700FBD1EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E1D4B322BC7A79100FBD1EA /* WishListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListModel.swift; sourceTree = "<group>"; };
+		8EB10D172BC96B590011E4D0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				8E1D4B262BC7A3B700FBD1EA /* Assets.xcassets */,
 				8E1D4B282BC7A3B700FBD1EA /* LaunchScreen.storyboard */,
 				8E1D4B2B2BC7A3B700FBD1EA /* Info.plist */,
+				8EB10D162BC96B590011E4D0 /* Model.xcdatamodeld */,
 			);
 			path = WishList;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 			files = (
 				8E1D4B222BC7A3B600FBD1EA /* ViewController.swift in Sources */,
 				8E1D4B1E2BC7A3B600FBD1EA /* AppDelegate.swift in Sources */,
+				8EB10D182BC96B590011E4D0 /* Model.xcdatamodeld in Sources */,
 				8E1D4B332BC7A79100FBD1EA /* WishListModel.swift in Sources */,
 				8E1D4B202BC7A3B600FBD1EA /* SceneDelegate.swift in Sources */,
 			);
@@ -384,6 +388,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8EB10D162BC96B590011E4D0 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8EB10D172BC96B590011E4D0 /* Model.xcdatamodel */,
+			);
+			currentVersion = 8EB10D172BC96B590011E4D0 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = /Users/ssaeng/Desktop/saeng/tomorrowLearnCamp/4/WishList/WishList/Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8E1D4B122BC7A3B600FBD1EA /* Project object */;
 }

@@ -11,16 +11,16 @@ class ViewController: UIViewController {
     
     @IBAction func itemChangeButton(_ sender: Any) {
         fetchData()
-        itemImageView.load(url: temp.thumbnail)
+        itemImageView.load(url: wishItem.thumbnail)
     }
-    var temp = WishListModel(id: 1, title: "임시제목", description: "설명입니다.", price: 150, discountPercentage: 15.5, rating: 5.0, stock: 32, brand: "Samsung", category: "Phone", thumbnail: "https://cdn.dummyjson.com/product-images/92/thumbnail.jpg", images: ["aaa", "aaa"])
+    var wishItem = WishListModel(id: 15, title: "우라라", description: "우라라라라라라?", price: 150, thumbnail: "")
     
     @IBOutlet weak var itemImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
-        itemImageView.load(url: temp.thumbnail)
+        itemImageView.load(url: wishItem.thumbnail)
         // Do any additional setup after loading the view.
     }
     
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
                 let decoder = JSONDecoder()
                 // 데이터 WishListModel화
                 let jsonData = try decoder.decode(WishListModel.self, from: data)
-                self.temp = jsonData // temp에 데이터 주입
+                self.wishItem = jsonData // temp에 데이터 주입
             } catch {
                 print("error:\(error)")
             }
