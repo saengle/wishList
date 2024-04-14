@@ -27,6 +27,9 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="위시리스트 담기"/>
+                                        <connections>
+                                            <action selector="addMYWishListButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YjD-ko-pGv"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="4g3-R6-bOS">
                                         <rect key="frame" x="185.66666666666663" y="0.0" width="175.33333333333337" height="35"/>
@@ -48,6 +51,9 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="위시리스트 보기"/>
+                                <connections>
+                                    <action selector="watchMyWishListButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WgR-cW-z4z"/>
+                                </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="267" id="2ZM-dI-C2n">
                                 <rect key="frame" x="16" y="59" width="361" height="673"/>

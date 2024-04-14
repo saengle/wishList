@@ -6,13 +6,28 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
+    
+    var persistentContainer: NSPersistentContainer? {
+        (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+    }
     
     @IBAction func itemChangeButton(_ sender: Any) {
         fetchData()
         itemImageView.load(url: wishItem.thumbnail)
     }
+    @IBAction func addMYWishListButton(_ sender: Any) {
+        saveDataToModel()
+        fetchData()
+        itemImageView.load(url: wishItem.thumbnail)
+    }
+    @IBAction func watchMyWishListButton(_ sender: Any) {
+        loadDataFromModel()
+    }
+    
+    
     var wishItem = WishListModel(id: 15, title: "우라라", description: "우라라라라라라?", price: 150, thumbnail: "")
     
     @IBOutlet weak var itemImageView: UIImageView!
@@ -21,7 +36,37 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         fetchData()
         itemImageView.load(url: wishItem.thumbnail)
+        
+        saveDataToModel()
+        loadDataFromModel()
+        
         // Do any additional setup after loading the view.
+    }
+    
+    func saveDataToModel() {
+        
+
+        guard let context = self.persistentContainer?.viewContext else { return }
+        
+        let myWishList = MyWishList(context: context)
+
+        myWishList.id = Int64(wishItem.id)
+        myWishList.title = wishItem.title
+        myWishList.explanation = wishItem.description
+        myWishList.price = Int64(wishItem.price)
+        myWishList.thumbnail = wishItem.thumbnail
+
+        try? context.save()
+    }
+    
+    func loadDataFromModel() {
+        guard let context = self.persistentContainer?.viewContext else { return }
+
+        let request = MyWishList.fetchRequest()
+        let myWishList = try? context.fetch(request)
+
+        print(myWishList)
+        
     }
     
     func fetchData() {
