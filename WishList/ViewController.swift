@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     @IBAction func itemChangeButton(_ sender: Any) {
         fetchData()
         itemImageView.load(url: wishItem.thumbnail)
+        itemNameLabel.text = wishItem.title
+        itemDescriptionTextView.text = "\(wishItem.description) \n\n Price : \(wishItem.price)$"
     }
     @IBAction func addMYWishListButton(_ sender: Any) {
         saveDataToModel()
@@ -28,10 +30,12 @@ class ViewController: UIViewController {
     }
     
     
-    var wishItem = WishListModel(id: 15, title: "우라라", description: "우라라라라라라?", price: 150, thumbnail: "")
+    var wishItem = WishListModel(id: 15, title: "다른상품 보기를 눌러주세요.", description: "현재 상품의 정보가 없습니다. 다른 상품 보기를 눌러주세요.", price: 150, thumbnail: "")
     
     @IBOutlet weak var itemImageView: UIImageView!
     
+    @IBOutlet weak var itemNameLabel: UILabel!
+    @IBOutlet weak var itemDescriptionTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
@@ -118,5 +122,11 @@ extension UIImageView {
                 }
             }
         }
+    }
+}
+
+extension UILabel {
+    func load(string: String) {
+        self.text? = string
     }
 }
