@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import Combine
 
 class ViewController: UIViewController {
     
@@ -17,15 +18,10 @@ class ViewController: UIViewController {
     
     @IBAction func itemChangeButton(_ sender: Any) {
         fetchData()
-        updateScreen()
     }
     @IBAction func addMYWishListButton(_ sender: Any) {
         self.saveDataToModel()
-        print("지금 저장되어야 할 품목은 \(wishItem.title)이야")
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-            self.fetchData()
-            self.updateScreen()
-        }
+        self.fetchData()
     }
     
     @IBAction func watchMyWishListButton(_ sender: Any) {
@@ -39,7 +35,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
-        itemImageView.load(url: wishItem.thumbnail)
         // Do any additional setup after loading the view.
     }
     
@@ -82,7 +77,11 @@ class ViewController: UIViewController {
                 let decoder = JSONDecoder()
                 // 데이터 WishListModel화
                 let jsonData = try decoder.decode(WishListModel.self, from: data)
-                self.wishItem = jsonData // temp에 데이터 주입
+                // Mark: 업데이트 스크린의 uilabel.text를 수정하는 행위는 메인스레드에서 사용 금지 -> 비동기로 실행하면 가능
+                DispatchQueue.main.async {
+                    self.wishItem = jsonData // temp에 데이터 주입
+                    self.updateScreen()
+                }
             } catch {
                 print("error:\(error)")
             }
@@ -98,7 +97,6 @@ class ViewController: UIViewController {
         numFormatter.numberStyle = .decimal
         let price = numFormatter.string(for: wishItem.price)!
         itemDescriptionTextView.text = "\(wishItem.description) \n\n Price : \(price)$"
-        
     }
 }
 
