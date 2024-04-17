@@ -13,6 +13,9 @@
 		8E1D4B252BC7A3B600FBD1EA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8E1D4B242BC7A3B600FBD1EA /* Base */; };
 		8E1D4B272BC7A3B700FBD1EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E1D4B262BC7A3B700FBD1EA /* Assets.xcassets */; };
 		8E1D4B2A2BC7A3B700FBD1EA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8E1D4B292BC7A3B700FBD1EA /* Base */; };
+		8E1D4B332BC7A79100FBD1EA /* WishListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1D4B322BC7A79100FBD1EA /* WishListModel.swift */; };
+		8EB10D182BC96B590011E4D0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8EB10D162BC96B590011E4D0 /* Model.xcdatamodeld */; };
+		8EFBD3612BCE5E0600A2263C /* WishListPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBD3602BCE5E0600A2263C /* WishListPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		8E1D4B262BC7A3B700FBD1EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E1D4B292BC7A3B700FBD1EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E1D4B2B2BC7A3B700FBD1EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E1D4B322BC7A79100FBD1EA /* WishListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListModel.swift; sourceTree = "<group>"; };
+		8EB10D172BC96B590011E4D0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		8EFBD3602BCE5E0600A2263C /* WishListPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,13 +65,33 @@
 				8E1D4B1D2BC7A3B600FBD1EA /* AppDelegate.swift */,
 				8E1D4B1F2BC7A3B600FBD1EA /* SceneDelegate.swift */,
 				8E1D4B212BC7A3B600FBD1EA /* ViewController.swift */,
+				8E1D4B342BC7A84A00FBD1EA /* WishListPage */,
+				8E1D4B312BC7A74C00FBD1EA /* WishListModel */,
 				8E1D4B232BC7A3B600FBD1EA /* Main.storyboard */,
 				8E1D4B262BC7A3B700FBD1EA /* Assets.xcassets */,
 				8E1D4B282BC7A3B700FBD1EA /* LaunchScreen.storyboard */,
 				8E1D4B2B2BC7A3B700FBD1EA /* Info.plist */,
+				8EB10D162BC96B590011E4D0 /* Model.xcdatamodeld */,
 			);
 			path = WishList;
 			sourceTree = "<group>";
+		};
+		8E1D4B312BC7A74C00FBD1EA /* WishListModel */ = {
+			isa = PBXGroup;
+			children = (
+				8E1D4B322BC7A79100FBD1EA /* WishListModel.swift */,
+			);
+			path = WishListModel;
+			sourceTree = "<group>";
+		};
+		8E1D4B342BC7A84A00FBD1EA /* WishListPage */ = {
+			isa = PBXGroup;
+			children = (
+				8EFBD3602BCE5E0600A2263C /* WishListPageView.swift */,
+			);
+			name = WishListPage;
+			path = WishList/WishListPage;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -140,6 +166,9 @@
 			files = (
 				8E1D4B222BC7A3B600FBD1EA /* ViewController.swift in Sources */,
 				8E1D4B1E2BC7A3B600FBD1EA /* AppDelegate.swift in Sources */,
+				8EFBD3612BCE5E0600A2263C /* WishListPageView.swift in Sources */,
+				8EB10D182BC96B590011E4D0 /* Model.xcdatamodeld in Sources */,
+				8E1D4B332BC7A79100FBD1EA /* WishListModel.swift in Sources */,
 				8E1D4B202BC7A3B600FBD1EA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,6 +392,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8EB10D162BC96B590011E4D0 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8EB10D172BC96B590011E4D0 /* Model.xcdatamodel */,
+			);
+			currentVersion = 8EB10D172BC96B590011E4D0 /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = /Users/ssaeng/Desktop/saeng/tomorrowLearnCamp/4/WishList/WishList/Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8E1D4B122BC7A3B600FBD1EA /* Project object */;
 }
