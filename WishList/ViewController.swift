@@ -18,19 +18,27 @@ class ViewController: UIViewController {
         fetchData()
         itemImageView.load(url: wishItem.thumbnail)
         itemNameLabel.text = wishItem.title
-        itemDescriptionTextView.text = "\(wishItem.description) \n\n Price : \(wishItem.price)$"
+        let numFormatter = NumberFormatter()
+        numFormatter.numberStyle = .decimal
+        let price = numFormatter.string(for: wishItem.price)!
+        itemDescriptionTextView.text = "\(wishItem.description) \n\n Price : \(price)$"
     }
     @IBAction func addMYWishListButton(_ sender: Any) {
         saveDataToModel()
         fetchData()
         itemImageView.load(url: wishItem.thumbnail)
+        itemNameLabel.text = wishItem.title
+        let numFormatter = NumberFormatter()
+        numFormatter.numberStyle = .decimal
+        let price = numFormatter.string(for: wishItem.price)!
+        itemDescriptionTextView.text = "\(wishItem.description) \n\n Price : \(price)$"
     }
     @IBAction func watchMyWishListButton(_ sender: Any) {
         loadDataFromModel()
     }
     
     
-    var wishItem = WishListModel(id: 15, title: "다른상품 보기를 눌러주세요.", description: "현재 상품의 정보가 없습니다. 다른 상품 보기를 눌러주세요.", price: 150, thumbnail: "")
+    var wishItem = WishListModel(id: 404, title: "정보가 없습니다", description: "현재 상품의 정보가 없습니다. 다른 상품 보기를 눌러주세요.", price: 150, thumbnail: "")
     
     @IBOutlet weak var itemImageView: UIImageView!
     
@@ -61,6 +69,7 @@ class ViewController: UIViewController {
         myWishList.thumbnail = wishItem.thumbnail
 
         try? context.save()
+        print(myWishList)
     }
     
     func loadDataFromModel() {
@@ -68,7 +77,6 @@ class ViewController: UIViewController {
 
         let request = MyWishList.fetchRequest()
         let myWishList = try? context.fetch(request)
-
         print(myWishList)
         
     }
@@ -125,8 +133,3 @@ extension UIImageView {
     }
 }
 
-extension UILabel {
-    func load(string: String) {
-        self.text? = string
-    }
-}

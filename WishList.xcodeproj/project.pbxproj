@@ -15,6 +15,7 @@
 		8E1D4B2A2BC7A3B700FBD1EA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8E1D4B292BC7A3B700FBD1EA /* Base */; };
 		8E1D4B332BC7A79100FBD1EA /* WishListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1D4B322BC7A79100FBD1EA /* WishListModel.swift */; };
 		8EB10D182BC96B590011E4D0 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8EB10D162BC96B590011E4D0 /* Model.xcdatamodeld */; };
+		8EFBD3612BCE5E0600A2263C /* WishListPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFBD3602BCE5E0600A2263C /* WishListPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		8E1D4B2B2BC7A3B700FBD1EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E1D4B322BC7A79100FBD1EA /* WishListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListModel.swift; sourceTree = "<group>"; };
 		8EB10D172BC96B590011E4D0 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		8EFBD3602BCE5E0600A2263C /* WishListPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishListPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		8E1D4B342BC7A84A00FBD1EA /* WishListPage */ = {
 			isa = PBXGroup;
 			children = (
+				8EFBD3602BCE5E0600A2263C /* WishListPageView.swift */,
 			);
 			name = WishListPage;
 			path = WishList/WishListPage;
@@ -163,6 +166,7 @@
 			files = (
 				8E1D4B222BC7A3B600FBD1EA /* ViewController.swift in Sources */,
 				8E1D4B1E2BC7A3B600FBD1EA /* AppDelegate.swift in Sources */,
+				8EFBD3612BCE5E0600A2263C /* WishListPageView.swift in Sources */,
 				8EB10D182BC96B590011E4D0 /* Model.xcdatamodeld in Sources */,
 				8E1D4B332BC7A79100FBD1EA /* WishListModel.swift in Sources */,
 				8E1D4B202BC7A3B600FBD1EA /* SceneDelegate.swift in Sources */,

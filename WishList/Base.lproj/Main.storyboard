@@ -89,7 +89,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="위시리스트 보기"/>
                                 <connections>
-                                    <action selector="watchMyWishListButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WgR-cW-z4z"/>
+                                    <segue destination="YFM-06-TVN" kind="presentation" id="PSs-T5-Jcw"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -111,6 +111,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-8.3969465648854964" y="-27.464788732394368"/>
+        </scene>
+        <!--Wish List Page View-->
+        <scene sceneID="Rtx-qu-StW">
+            <objects>
+                <viewController storyboardIdentifier="WishListPageView" id="YFM-06-TVN" customClass="WishListPageView" customModule="WishList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gAw-lB-zIa">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oPH-Td-oDE">
+                                <rect key="frame" x="16" y="20" width="361" height="802"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sYb-VX-bdg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="wishListTableView" destination="oPH-Td-oDE" id="snL-Ua-4x8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E7o-tu-hXx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="904.58015267175574" y="-27.464788732394368"/>
         </scene>
     </scenes>
     <resources>
