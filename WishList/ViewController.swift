@@ -7,78 +7,48 @@
 
 import UIKit
 import CoreData
+import Combine
 
 class ViewController: UIViewController {
     
     var persistentContainer: NSPersistentContainer? {
         (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     }
+    var wishItem = WishListModel(id: 404, title: "정보가 없습니다", description: "현재 상품의 정보가 없습니다. 다른 상품 보기를 눌러주세요.", price: 150, thumbnail: "")
     
     @IBAction func itemChangeButton(_ sender: Any) {
         fetchData()
-        itemImageView.load(url: wishItem.thumbnail)
-        itemNameLabel.text = wishItem.title
-        let numFormatter = NumberFormatter()
-        numFormatter.numberStyle = .decimal
-        let price = numFormatter.string(for: wishItem.price)!
-        itemDescriptionTextView.text = "\(wishItem.description) \n\n Price : \(price)$"
     }
     @IBAction func addMYWishListButton(_ sender: Any) {
-        saveDataToModel()
-        fetchData()
-        itemImageView.load(url: wishItem.thumbnail)
-        itemNameLabel.text = wishItem.title
-        let numFormatter = NumberFormatter()
-        numFormatter.numberStyle = .decimal
-        let price = numFormatter.string(for: wishItem.price)!
-        itemDescriptionTextView.text = "\(wishItem.description) \n\n Price : \(price)$"
+        self.saveDataToModel()
+        self.fetchData()
     }
+    
     @IBAction func watchMyWishListButton(_ sender: Any) {
-        loadDataFromModel()
+        // 페이지 이동(스토리보드)
     }
-    
-    
-    var wishItem = WishListModel(id: 404, title: "정보가 없습니다", description: "현재 상품의 정보가 없습니다. 다른 상품 보기를 눌러주세요.", price: 150, thumbnail: "")
     
     @IBOutlet weak var itemImageView: UIImageView!
-    
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var itemDescriptionTextView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
-        itemImageView.load(url: wishItem.thumbnail)
-        
-        saveDataToModel()
-        loadDataFromModel()
-        
         // Do any additional setup after loading the view.
     }
     
     func saveDataToModel() {
-        
-
         guard let context = self.persistentContainer?.viewContext else { return }
         
         let myWishList = MyWishList(context: context)
-
         myWishList.id = Int64(wishItem.id)
         myWishList.title = wishItem.title
         myWishList.explanation = wishItem.description
         myWishList.price = Int64(wishItem.price)
         myWishList.thumbnail = wishItem.thumbnail
-
-        try? context.save()
-        print(myWishList)
-    }
-    
-    func loadDataFromModel() {
-        guard let context = self.persistentContainer?.viewContext else { return }
-
-        let request = MyWishList.fetchRequest()
-        let myWishList = try? context.fetch(request)
-        print(myWishList)
         
+        try? context.save()
     }
     
     func fetchData() {
@@ -92,7 +62,7 @@ class ViewController: UIViewController {
         //           components?.percentEncodedQueryItems = parameters
         //URL 생성
         guard let url = components?.url else { return }
-//                print(url)
+        //                print(url)
         //리퀘스트 생성
         var request: URLRequest = URLRequest(url: url)
         //통신 방법 지정
@@ -107,14 +77,26 @@ class ViewController: UIViewController {
                 let decoder = JSONDecoder()
                 // 데이터 WishListModel화
                 let jsonData = try decoder.decode(WishListModel.self, from: data)
-                self.wishItem = jsonData // temp에 데이터 주입
+                // Mark: 업데이트 스크린의 uilabel.text를 수정하는 행위는 메인스레드에서 사용 금지 -> 비동기로 실행하면 가능
+                DispatchQueue.main.async {
+                    self.wishItem = jsonData // temp에 데이터 주입
+                    self.updateScreen()
+                }
             } catch {
                 print("error:\(error)")
             }
         }
         //실행
         task.resume()
-        
+    }
+    
+    func updateScreen() {
+        itemImageView.load(url: wishItem.thumbnail)
+        itemNameLabel.text = wishItem.title
+        let numFormatter = NumberFormatter()
+        numFormatter.numberStyle = .decimal
+        let price = numFormatter.string(for: wishItem.price)!
+        itemDescriptionTextView.text = "\(wishItem.description) \n\n Price : \(price)$"
     }
 }
 
